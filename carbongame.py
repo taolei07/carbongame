@@ -23,6 +23,17 @@ st.set_page_config(
 TABLE = "carbon_match_games"
 RULES_VERSION = 2
 
+# ============================================================
+# Supabase Connection
+# ============================================================
+@st.cache_resource
+def get_supabase() -> Client:
+    url = st.secrets["supabase_url"]
+    key = st.secrets["supabase_key"]
+    return create_client(url, key)
+
+
+supabase = get_supabase()
 
 # ============================================================
 # Bilingual Text
