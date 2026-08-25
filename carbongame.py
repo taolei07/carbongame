@@ -1318,18 +1318,46 @@ def resolve_pending_power(state):
 
 def cancel_pending_power_with_ban(state, defender_is_p1):
     pending = state.get("pending_power")
-    if not pending or pending["actor_is_p1"] == defender_is_p1:
+
+    # There must be an opponent's Power Card waiting for Ban.
+    if not isinstance(pending, dict):
         return False
+
+    if pending.get("actor_is_p1") == defender_is_p1:
+        return False
+
     defender_hand = hand_for(state, defender_is_p1)
-    ban_index = next((i for i, card in enumerate(defender_hand) if card[0] == "Ban"), None)
+    ban_index = next(
+        (
+            index
+            for index, card in enumerate(defender_hand)
+            if card[0] == "Ban"
+        ),
+        None,
+    )
+
     if ban_index is None:
         return False
-    defender_hand.pop(ban_index)
-    actor_name = display_player(pending["actor_is_p1"])
+
+    actor_is_p1 = pending["actor_is_p1"]
     card_name = pending["card"][0]
+
+    # Remove Ban from the defender's hand.
+    defender_hand.pop(ban_index)
+
+    # Cancel the opponent's waiting Power Card.
     state["pending_power"] = None
-    add_log(state, tr("ban_cancelled", player=actor_name, card=card_name))
+
+    add_log(
+        state,
+        tr(
+            "ban_cancelled",
+            player=display_player(actor_is_p1),
+            card=card_name,
+        ),
+    )
     return True
+
 
 
 def apply_chaos(state, actor_is_p1):
