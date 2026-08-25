@@ -5,7 +5,6 @@ import mimetypes
 import random
 import time
 from pathlib import Path
-
 import streamlit as st
 from supabase import create_client, Client
 from streamlit_autorefresh import st_autorefresh
@@ -1831,6 +1830,8 @@ def render_player_column(target_is_p1):
                         st.rerun()
             with b3:
                 if st.button(T["end_turn"], key=f"end_{player_name}"):
+                    peek_key = "p1_peeked_card" if target_is_p1 else "p2_peeked_card"
+                    state[peek_key] = None
                     clear_tactical_state(state)
                     state["turn"] = "Player 2" if target_is_p1 else "Player 1"
                     set_turn_ap(state, not target_is_p1)
