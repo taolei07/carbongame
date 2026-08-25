@@ -96,6 +96,7 @@ LANG_TEXT = {
         "profession_used": "This profession ability has already been used.",
         "regulator_ready": "Use Emissions Regulator: make the opponent's next Power Card cost +1 AP.",
         "regulator_applied": "Emissions Regulator applied: the opponent's next Power Card costs +1 AP.",
+        "regulator_debuff_active": "⚠️ Debuff active: your next Power Card costs +1 AP.",
         "peek_card": "Peeked Card",
         "peek_empty": "The deck is empty, so there is no next card to see.",
         "peek_note": "Only you can see this peeked card.",
@@ -194,6 +195,7 @@ LANG_TEXT = {
         "profession_used": "这个职业能力本局已经使用过。",
         "regulator_ready": "使用排放监管员：让对手下一张 Power Card 额外消耗1行动点。",
         "regulator_applied": "排放监管员已生效：对手下一张 Power Card 额外消耗1行动点。",
+        "regulator_debuff_active": "⚠️ Debuff 生效：你的下一张 Power Card 额外消耗1行动点。",
         "peek_card": "透视到的牌",
         "peek_empty": "牌堆为空，没有下一张牌可以查看。",
         "peek_note": "只有你能看到这张透视牌。",
@@ -292,6 +294,7 @@ LANG_TEXT = {
         "profession_used": "Keupayaan profesion ini telah digunakan.",
         "regulator_ready": "Gunakan Emissions Regulator: Power Card lawan yang seterusnya memerlukan +1 AP.",
         "regulator_applied": "Emissions Regulator aktif: Power Card lawan yang seterusnya memerlukan +1 AP.",
+        "regulator_debuff_active": "⚠️ Debuff aktif: Power Card anda yang seterusnya memerlukan +1 AP.",
         "peek_card": "Kad yang dilihat",
         "peek_empty": "Dek kosong, tiada kad seterusnya untuk dilihat.",
         "peek_note": "Hanya anda boleh melihat kad ini.",
@@ -1205,14 +1208,15 @@ def power_card_cost(state, actor_is_p1, card_name):
             state[debuff_key] = False
         return 0
 
-    if free_effect:
-        cost = 0
-    else:
-        cost = base_cost
-        if double_effect:
+     if free_effect:
+            cost = 0
+     else:
+            cost = base_cost
+    if double_effect:
             cost *= 2
-        if regulator_effect:
+    if regulator_effect:
             cost += 1
+
 
     # Any pending Chaos/Regulator effect applies to the next Power Card.
     if free_effect:
@@ -1696,8 +1700,18 @@ def render_player_column(target_is_p1):
         zone_label += T["you_suffix"]
 
     with st.container():
-        st.markdown(f"### {zone_label}")
+        st.markdown(f"### {zone_label}"
         st.caption(tr("profession_display", profession=display_profession(profession)))
+        
+        debuff_key = (
+            "p1_emissions_debuff"
+            if target_is_p1
+            else "p2_emissions_debuff"
+        )
+
+        if state.get(debuff_key, False):
+            st.warning(T["regulator_debuff_active"])
+
         if turn_is_this_player:
             if is_mine:
                 st.success(tr("your_turn", ap=state["ap"]))
