@@ -525,6 +525,15 @@ PROFESSION_LABELS = {
         "Emissions Regulator": "排放监管员",
         "Ordinary Person": "普通人",
     },
+        "BM": {
+        "Carbon Scientist": "Saintis Karbon",
+        "Carbon Capture Engineer": "Jurutera Penangkapan Karbon",
+        "Renewable Energy Engineer": "Jurutera Tenaga Boleh Baharu",
+        "Carbon Auditor": "Juruaudit Karbon",
+        "Emissions Regulator": "Pengawal Selia Pelepasan",
+        "Ordinary Person": "Orang Biasa",
+    },
+
 }
 
 PROFESSION_DESCRIPTIONS = {
@@ -543,6 +552,14 @@ PROFESSION_DESCRIPTIONS = {
         "Carbon Auditor": "开局获得两张透视下一张牌；使用透视牌不消耗行动点。",
         "Emissions Regulator": "每场一次主动施加 Debuff，让对手下一张 Power Card 额外消耗1行动点。",
         "Ordinary Person": "没有额外效果。",
+    },
+        "BM": {
+        "Carbon Scientist": "Pasif: setiap giliran anda bermula dengan 3 AP.",
+        "Carbon Capture Engineer": "Buff permulaan: kehilangan daripada pasangan hitam pertama dikurangkan sebanyak 2 mata.",
+        "Renewable Energy Engineer": "Buff permulaan: pasangan merah pertama mendapat tambahan 2 mata.",
+        "Carbon Auditor": "Bermula dengan dua Peek Next Card. Kad Peek tidak menggunakan AP.",
+        "Emissions Regulator": "Sekali setiap permainan, gunakan secara manual untuk menjadikan Power Card lawan yang seterusnya memerlukan +1 AP.",
+        "Ordinary Person": "Tiada kesan tambahan.",
     },
 }
 
