@@ -1701,6 +1701,7 @@ def render_player_column(target_is_p1):
 
     with st.container():
         st.markdown(f"### {zone_label}"
+        ）
         st.caption(tr("profession_display", profession=display_profession(profession)))
         
         debuff_key = (
