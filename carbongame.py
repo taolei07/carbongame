@@ -1527,6 +1527,17 @@ if state.get("restart_requested", False):
             p1_restart_profession,
             p2_restart_profession,
         )
+        
+        components.html(
+            """
+            <script>
+            window.parent.__carbonMatchVictoryPlayed = false;
+            </script>
+            """,
+            height=0,
+            width=0,
+        )
+
         save_game(room_code, new_state)
         st.rerun()
     else:
