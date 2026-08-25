@@ -20,7 +20,7 @@ st.set_page_config(
 )
 
 TABLE = "carbon_match_games"
-RULES_VERSION = 2
+RULES_VERSION = 3
 
 # ============================================================
 # Supabase Connection
@@ -911,6 +911,8 @@ def initial_state(lang="EN"):
         "p2_emissions_used": False,
         "p1_emissions_debuff": False,
         "p2_emissions_debuff": False,
+        "p1_emissions_remaining": 2,
+        "p2_emissions_remaining": 2,
         "p1_free_power_remaining": 0,
         "p2_free_power_remaining": 0,
         "p1_double_power_next": False,
@@ -924,6 +926,9 @@ def initial_state(lang="EN"):
         "q_selected_own_card": None,
         "pending_power": None,
         "game_over": False,
+        "restart_requested": False,
+        "restart_p1_profession": None,
+        "restart_p2_profession": None,
         "logs": [LANG_TEXT[lang]["game_start"]],
     }
 
@@ -983,14 +988,17 @@ def register_profession(state, is_p1, profession):
     return True
 
 
-def restart_with_professions(old_state):
+def restart_with_selected_professions(p1_profession, p2_profession):
     new_state = initial_state(LANG)
-    new_state["p1_profession"] = old_state.get("p1_profession")
-    new_state["p2_profession"] = old_state.get("p2_profession")
-    if new_state["p1_profession"]:
+    new_state["p1_profession"] = p1_profession
+    new_state["p2_profession"] = p2_profession
+
+    if p1_profession:
         apply_starting_profession(new_state, True)
-    if new_state["p2_profession"]:
+    if p2_profession:
         apply_starting_profession(new_state, False)
+
+    # Player 1 starts the new round.
     set_turn_ap(new_state, True)
     return new_state
 
@@ -1541,18 +1549,11 @@ current_base_ap = base_ap_for(state, state["turn"] == "Player 1")
 top2.metric(T["current_ap"], f"{state['ap']} (base {current_base_ap})")
 top3.metric(T["score_label"], f"P1: {state['p1_score']} | P2: {state['p2_score']}")
 if top4.button(T["restart"], use_container_width=True):
-    components.html(
-        """
-        <script>
-        window.parent.__carbonMatchVictoryPlayed = false;
-        </script>
-        """,
-        height=0,
-        width=0,
-    )
-    save_game(room_code, restart_with_professions(state))
+    state["restart_requested"] = True
+    state["restart_p1_profession"] = None
+    state["restart_p2_profession"] = None
+    save_game(room_code, state)
     st.rerun()
-
 
 # ============================================================
 # Pending Ban Window and Victory Music
