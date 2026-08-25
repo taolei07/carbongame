@@ -1700,16 +1700,21 @@ def render_player_column(target_is_p1):
         zone_label += T["you_suffix"]
 
     with st.container():
-        st.markdown(f"### {zone_label}"）
-        st.caption(tr("profession_display", profession=display_profession(profession)))
-        
-        debuff_key = (
+        st.markdown(f"### {zone_label}")
+        st.caption(
+            tr(
+                "profession_display",
+                profession=display_profession(profession),
+            )
+        )
+
+        player_debuff_key = (
             "p1_emissions_debuff"
             if target_is_p1
             else "p2_emissions_debuff"
         )
 
-        if state.get(debuff_key, False):
+        if state.get(player_debuff_key, False):
             st.warning(T["regulator_debuff_active"])
 
         if turn_is_this_player:
