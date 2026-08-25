@@ -1700,8 +1700,7 @@ def render_player_column(target_is_p1):
         zone_label += T["you_suffix"]
 
     with st.container():
-        st.markdown(f"### {zone_label}"
-        ）
+        st.markdown(f"### {zone_label}"）
         st.caption(tr("profession_display", profession=display_profession(profession)))
         
         debuff_key = (
