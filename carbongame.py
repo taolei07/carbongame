@@ -1806,7 +1806,7 @@ def render_player_column(target_is_p1):
 # ============================================================
 # Main Layout
 # ============================================================
-st_autorefresh(interval=1000, key="carbon_match_v2_refresh")
+st_autorefresh(interval=500, key="carbon_match_v2_refresh")
 col_p1, col_p2 = st.columns(2)
 with col_p1:
     render_player_column(True)
