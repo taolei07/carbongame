@@ -407,7 +407,7 @@ When a player uses a Power Card and the opponent has a Ban card, the opponent ge
 ### Victory
 When the game settles, the higher final score wins. If both final scores are equal, the result is a draw. The victory BGM plays when the settlement banner appears.
 """
-else:
+elif LANG == "ZH":
     rules_title = "游戏说明 / Rules"
     rules_text = r"""
 ### 游戏目标
@@ -449,6 +449,52 @@ else:
 ### 胜负
 当游戏结算时，最终分数较高者获胜；分数相同则为平局。出现结算横幅时会播放胜利 BGM。
 """
+
+elif LANG == "BM":
+    rules_title = "Arahan Permainan / Peraturan"
+    rules_text = r"""
+### Objektif
+Dapatkan mata dengan memadankan kad nombor yang mempunyai warna sama. Permainan tamat apabila dek kosong dan kedua-dua pemain tiada tindakan yang sah. Pemain dengan mata lebih tinggi menang. Jika mata sama, keputusan ialah seri.
+
+### Giliran dan AP
+Pada permulaan giliran anda, AP asas ditetapkan kepada **2 AP**. Carbon Scientist bermula setiap gilirannya dengan **3 AP**. Ambil kad menggunakan **1 AP**, gunakan Power Card mengikut peraturannya, dan tamatkan giliran selepas selesai. AP boleh melebihi jumlah asas.
+
+### Pengiraan Mata
+Pasangan merah dengan nombor yang sama mendapat **nombor × 1.5** mata. Pasangan hitam dengan nombor yang sama mendapat **−nombor** mata. Pasangan hitam dan merah dengan nombor yang sama boleh dineutralkan untuk **0 mata**.
+
+Carbon Capture Engineer mengurangkan kehilangan daripada pasangan hitam pertama sebanyak 2 mata. Renewable Energy Engineer memberikan tambahan 2 mata untuk pasangan merah pertama.
+
+### Profesion
+| Profesion | Kesan |
+|---|---|
+| Carbon Scientist | Pasif: setiap giliran anda bermula dengan 3 AP. |
+| Carbon Capture Engineer | Buff permulaan: kehilangan pasangan hitam pertama dikurangkan sebanyak 2 mata. |
+| Renewable Energy Engineer | Buff permulaan: pasangan merah pertama mendapat tambahan 2 mata. |
+| Carbon Auditor | Bermula dengan dua Peek Next Card. Kad Peek tidak menggunakan AP. |
+| Emissions Regulator | Sekali setiap permainan, gunakan secara manual untuk menjadikan Power Card lawan yang seterusnya memerlukan +1 AP. |
+| Ordinary Person | Tiada kesan tambahan. |
+
+### Power Card
+- **+1 AP:** Dapatkan 1 AP. Terdapat 6 kad.
+- **Steal Staging:** Curi satu kad daripada zon sementara lawan.
+- **Single Swap:** Tukar satu kad zon sementara anda dengan satu kad zon sementara lawan.
+- **Push:** Pindahkan satu kad zon sementara anda ke zon sementara lawan.
+- **Steal:** Curi satu Power Card daripada tangan lawan.
+- **Destroy:** Musnahkan satu kad daripada tangan lawan.
+- **Peek Next Card:** Lihat kad teratas dek tanpa mengambilnya.
+- **Reshuffle:** Kocok semula baki dek.
+- **Ban:** Batalkan Power Card lawan dalam tetingkap tindak balas 5 saat.
+
+### Kad Chaos
+Kad Chaos memilih satu daripada lima kesan secara rawak: Power Card seterusnya tidak memerlukan AP; dapat 2 mata; kehilangan 2 mata; Power Card seterusnya memerlukan AP berganda; atau lihat kad seterusnya tanpa mengambilnya.
+
+### Tetingkap Ban
+Apabila pemain menggunakan Power Card dan lawan mempunyai Ban, lawan mempunyai **5 saat** untuk menekan Ban. Jika Ban digunakan, Power Card dibatalkan. Jika tiada Ban digunakan sebelum masa tamat, Power Card dilaksanakan.
+
+### Menang atau Seri
+Apabila permainan selesai, pemain dengan jumlah mata akhir yang lebih tinggi menang. Jika jumlah mata akhir sama, keputusan ialah seri. Muzik kemenangan dimainkan apabila permainan selesai.
+"""
+
 
 with st.expander(f"❗ {rules_title}", expanded=False):
     st.markdown(rules_text)
