@@ -1470,6 +1470,74 @@ my_player_is_p1 = st.session_state.my_player_is_p1
 my_player_name = display_player(my_player_is_p1)
 state = load_game(room_code)
 
+# ============================================================
+# Restart: choose professions again
+# ============================================================
+if state.get("restart_requested", False):
+    st.info(
+        "Choose your profession for the new game / "
+        "选择新游戏职业 / Pilih profesion untuk permainan baharu"
+    )
+
+    my_restart_key = (
+        "restart_p1_profession"
+        if my_player_is_p1
+        else "restart_p2_profession"
+    )
+
+    my_restart_profession = state.get(my_restart_key)
+
+    if my_restart_profession is None:
+        restart_choice = st.selectbox(
+            T["profession_label"],
+            options=PROFESSION_KEYS,
+            format_func=lambda key: (
+                f"{display_profession(key)} — "
+                f"{PROFESSION_DESCRIPTIONS[LANG][key]}"
+            ),
+            key=(
+                "restart_p1_choice"
+                if my_player_is_p1
+                else "restart_p2_choice"
+            ),
+        )
+
+        if st.button(
+            "Confirm Profession / 确认职业 / Sahkan Profesion",
+            key=(
+                "confirm_restart_p1"
+                if my_player_is_p1
+                else "confirm_restart_p2"
+            ),
+        ):
+            state[my_restart_key] = restart_choice
+            save_game(room_code, state)
+            st.rerun()
+    else:
+        st.success(
+            "Your new profession is selected / "
+            f"你的新职业：{display_profession(my_restart_profession)}"
+        )
+
+    p1_restart_profession = state.get("restart_p1_profession")
+    p2_restart_profession = state.get("restart_p2_profession")
+
+    if p1_restart_profession and p2_restart_profession:
+        new_state = restart_with_selected_professions(
+            p1_restart_profession,
+            p2_restart_profession,
+        )
+        save_game(room_code, new_state)
+        st.rerun()
+    else:
+        st.warning(
+            "Waiting for both players to choose a profession / "
+            "等待双方选择职业 / "
+            "Menunggu kedua-dua pemain memilih profesion"
+        )
+
+    st.stop()
+
 if register_profession(state, my_player_is_p1, st.session_state.my_profession):
     save_game(room_code, state)
 
