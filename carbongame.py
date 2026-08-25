@@ -1401,6 +1401,7 @@ def complete_steal_staging(state, actor_is_p1, target_index):
     card = opponent_staging.pop(target_index)
     own_staging.append(card)
     add_log(state, tr("steal_staging_done", player=display_player(actor_is_p1), card=card[0]))
+    auto_score_same_color_pairs(state, actor_is_p1)
     clear_tactical_state(state)
     return True
 
@@ -1580,6 +1581,14 @@ if state.get("restart_requested", False):
         )
 
     st.stop()
+# Safety check: score any same-color pairs already present in the staging areas.
+pairs_changed = False
+if auto_score_same_color_pairs(state, True):
+    pairs_changed = True
+if auto_score_same_color_pairs(state, False):
+    pairs_changed = True
+if pairs_changed:
+    save_game(room_code, state)
 
 if register_profession(state, my_player_is_p1, st.session_state.my_profession):
     save_game(room_code, state)
