@@ -11,7 +11,6 @@ from supabase import create_client, Client
 from streamlit_autorefresh import st_autorefresh
 import streamlit.components.v1 as components
 
-
 # ============================================================
 # Page Setup
 # ============================================================
@@ -698,6 +697,42 @@ def install_game_audio():
 # ============================================================
 # Utility Functions
 # ============================================================
+LOG_KEYS = {
+    "game_start",
+    "end_turn_log",
+    "neutral_log",
+    "black_pair",
+    "red_pair",
+    "plus_ap",
+    "steal_staging_prepare",
+    "steal_staging_done",
+    "single_swap_prepare",
+    "single_swap_locked",
+    "single_swap_done",
+    "push_prepare",
+    "push_done",
+    "steal_prepare",
+    "steal_done",
+    "destroy_prepare",
+    "destroy_done",
+    "reshuffle_done",
+    "peek_done",
+    "game_over",
+    "room_profession_locked",
+    "auditor_start",
+    "draw_number",
+    "draw_power",
+    "draw_chaos",
+    "ban_cancelled",
+    "power_resolved",
+    "regulator_applied",
+    "chaos_good_free",
+    "chaos_good_score",
+    "chaos_bad_score",
+    "chaos_bad_double",
+    "chaos_neutral_peek",
+}
+
 def tr(key: str, **kwargs) -> str:
     return T[key].format(**kwargs)
 
