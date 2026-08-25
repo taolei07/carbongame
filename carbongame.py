@@ -237,7 +237,6 @@ LANG_TEXT = {
         "waiting_profession": "等待另一位玩家选择职业。",
         "auditor_start": "碳审计员开局获得两张透视下一张牌。",
     },
-}
     "BM": {
         "page_title": "🃏 Carbon Match: Pertarungan Karbon",
         "room_caption": "Masukkan kod bilik yang sama dengan lawan, pilih peranan dan profesion, kemudian bertarung dalam talian.",
@@ -336,7 +335,7 @@ LANG_TEXT = {
         "waiting_profession": "Menunggu pemain lain memilih profesion.",
         "auditor_start": "Carbon Auditor bermula dengan dua Peek Next Card.",
     },
-
+}
 # Language selector is intentionally kept in the new version.
 if "language" not in st.session_state:
     st.session_state.language = "EN"
