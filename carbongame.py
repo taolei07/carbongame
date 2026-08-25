@@ -1208,14 +1208,14 @@ def power_card_cost(state, actor_is_p1, card_name):
             state[debuff_key] = False
         return 0
 
-     if free_effect:
-            cost = 0
-     else:
-            cost = base_cost
+    if free_effect:
+        cost = 0
+    else:
+        cost = base_cost
     if double_effect:
-            cost *= 2
+        cost *= 2
     if regulator_effect:
-            cost += 1
+        cost += 1
 
 
     # Any pending Chaos/Regulator effect applies to the next Power Card.
