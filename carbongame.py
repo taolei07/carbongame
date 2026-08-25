@@ -238,18 +238,129 @@ LANG_TEXT = {
         "auditor_start": "碳审计员开局获得两张透视下一张牌。",
     },
 }
+    "BM": {
+        "page_title": "🃏 Carbon Match: Pertarungan Karbon",
+        "room_caption": "Masukkan kod bilik yang sama dengan lawan, pilih peranan dan profesion, kemudian bertarung dalam talian.",
+        "room_input_label": "Kod Bilik",
+        "you_are": "Anda ialah",
+        "profession_label": "Pilih profesion",
+        "join_create": "Sertai / Cipta Bilik",
+        "room_warn": "Sila masukkan kod bilik dahulu.",
+        "leave_room": "🚪 Keluar Bilik",
+        "room_header": "Bilik: {room} ｜ Anda: {player} ｜ Profesion: {profession}",
+        "deck_status": "📦 Status Dek",
+        "cards_remaining": "Kad Berbaki: {count} / 60",
+        "current_turn": "📍 Giliran Semasa",
+        "current_ap": "⚡ AP Semasa",
+        "score_label": "⭐ Skor",
+        "restart": "🔄 Mulakan Semula Permainan",
+        "game_settled": "PERMAINAN SELESAI",
+        "game_over_msg": "{winner} menang dengan {score} mata!",
+        "p1_zone": "🔵 Zon Pemain 1",
+        "p2_zone": "🔴 Zon Pemain 2",
+        "you_suffix": " (Anda)",
+        "your_turn": "⚡ Giliran anda (AP berbaki: {ap})",
+        "opp_turn": "⏳ Giliran lawan, sila tunggu...",
+        "current_score": "Skor Semasa: {score}",
+        "profession_display": "Profesion: {profession}",
+        "draw_card": "🎴 Ambil Kad (-1 AP)",
+        "neutralize": "🌿 Neutralisasi (0 mata)",
+        "end_turn": "⏭️ Tamatkan Giliran",
+        "draw_warn": "AP tidak mencukupi atau dek sudah kosong.",
+        "neutral_warn_no_pair": "Tiada kad warna berlawanan yang boleh dipasangkan.",
+        "neutral_warn_few": "Zon sementara mempunyai kurang daripada 2 kad.",
+        "hand_title": "🎒 Kad Tangan {player}",
+        "hand_empty": "Tangan kosong",
+        "staging_title": "📥 Zon Sementara {player}",
+        "staging_empty": "Zon sementara kosong",
+        "scored_title": "🏆 Zon Skor {player} (Jumlah Skor: {score})",
+        "scored_empty": "Belum ada pasangan dalam zon skor",
+        "pair_label": "Pasangan #{number}",
+        "push_hint": "👉 Push aktif: pilih satu kad daripada zon sementara ini.",
+        "single_swap_hint_own": "👉 Single Swap aktif: pilih kad daripada zon sementara anda.",
+        "single_swap_hint_opp": "👉 Single Swap aktif: pilih kad daripada zon sementara lawan.",
+        "steal_staging_hint": "👉 Steal Staging aktif: pilih kad daripada zon sementara lawan.",
+        "steal_hint": "👉 Steal aktif: pilih Power Card lawan.",
+        "destroy_hint": "👉 Destroy aktif: pilih satu kad daripada tangan lawan.",
+        "ap_warn": "⚠️ AP tidak mencukupi.",
+        "play_btn": "Mainkan #{number}",
+        "push_btn": "Push #{number}",
+        "select_btn": "Pilih #{number}",
+        "swap_btn": "Tukar #{number}",
+        "steal_btn": "Curi #{number}",
+        "destroy_btn": "Musnahkan #{number}",
+        "ban_btn": "🛑 Ban Power Card",
+        "use_profession": "Gunakan Keupayaan Profesion",
+        "profession_used": "Keupayaan profesion ini telah digunakan.",
+        "regulator_ready": "Gunakan Emissions Regulator: Power Card lawan yang seterusnya memerlukan +1 AP.",
+        "regulator_applied": "Emissions Regulator aktif: Power Card lawan yang seterusnya memerlukan +1 AP.",
+        "peek_card": "Kad yang dilihat",
+        "peek_empty": "Dek kosong, tiada kad seterusnya untuk dilihat.",
+        "peek_note": "Hanya anda boleh melihat kad ini.",
+        "ban_window": "{player} memainkan {card}. Anda mempunyai {seconds} saat untuk menggunakan Ban.",
+        "ban_wait": "Menunggu tetingkap Ban 5 saat untuk {player}...",
+        "ban_cancelled": "{card} milik {player} telah disekat oleh Ban.",
+        "power_resolved": "Masa Ban tamat, {card} milik {player} telah dilaksanakan.",
+        "ban_unavailable": "Ban hanya boleh digunakan dalam tetingkap tindak balas 5 saat lawan.",
+        "chaos_title": "Kad Chaos",
+        "chaos_good_free": "Kesan Chaos: Power Card anda yang seterusnya tidak memerlukan AP.",
+        "chaos_good_score": "Kesan Chaos: anda mendapat 2 mata.",
+        "chaos_bad_score": "Kesan Chaos: anda kehilangan 2 mata.",
+        "chaos_bad_double": "Kesan Chaos: Power Card anda yang seterusnya memerlukan AP berganda.",
+        "chaos_neutral_peek": "Kesan Chaos: anda boleh melihat kad seterusnya tanpa mengambilnya.",
+        "draw_number": "{player} mengambil kad nombor [{value}-{color}] ke zon sementara.",
+        "draw_power": "{player} mengambil Power Card [{card}].",
+        "draw_chaos": "{player} mengambil Kad Chaos.",
+        "game_start": "🎮 Permainan bermula! Carbon Match dimulakan. Pemain 1 bermula.",
+        "end_turn_log": "Giliran tamat: sekarang giliran {player}.",
+        "neutral_log": "{player} meneutralkan pasangan warna bercampur {value}: 0 mata.",
+        "black_pair": "{player} mendapat pasangan hitam {value}: {points} mata.",
+        "red_pair": "{player} mendapat pasangan merah {value}: {points} mata.",
+        "plus_ap": "{player} menggunakan +1 AP dan mendapat 1 AP.",
+        "steal_staging_prepare": "{player} sedang memilih kad daripada zon sementara lawan untuk dicuri.",
+        "steal_staging_done": "{player} mencuri {card} daripada zon sementara lawan.",
+        "single_swap_prepare": "{player} sedang menyediakan Single Swap.",
+        "single_swap_locked": "{player} memilih {card} untuk Single Swap.",
+        "single_swap_done": "{player} menukar {own} dengan {target}.",
+        "push_prepare": "{player} sedang menyediakan Push.",
+        "push_done": "{player} menolak {card} kepada lawan.",
+        "steal_prepare": "{player} sedang menyediakan Steal.",
+        "steal_done": "{player} mencuri Power Card [{card}] daripada tangan lawan.",
+        "destroy_prepare": "{player} sedang menyediakan Destroy.",
+        "destroy_done": "{player} memusnahkan kad lawan [{card}].",
+        "all_swap_removed": "Steal Staging",
+        "reshuffle_done": "{player} mengocok semula dek yang berbaki.",
+        "peek_done": "{player} menggunakan Peek Next Card.",
+        "game_over": "Keputusan akhir: Pemain 1 {p1} mata, Pemain 2 {p2} mata. Pemenang: {winner}.",
+        "room_profession_locked": "Profesion bilik dikunci: {profession}.",
+        "waiting_profession": "Menunggu pemain lain memilih profesion.",
+        "auditor_start": "Carbon Auditor bermula dengan dua Peek Next Card.",
+    },
+}
 
 # Language selector is intentionally kept in the new version.
 if "language" not in st.session_state:
     st.session_state.language = "EN"
 
+language_options = ["EN", "中文", "BM / Bahasa Malaysia"]
+
 language_choice = st.selectbox(
-    "🌐 Language / 语言",
-    options=["EN", "中文"],
-    index=0 if st.session_state.language == "EN" else 1,
+    "🌐 Language / 语言 / Bahasa",
+    options=language_options,
+    index={"EN": 0, "ZH": 1, "BM": 2}.get(
+        st.session_state.language,
+        0,
+    ),
     key="language_selector",
 )
-st.session_state.language = "EN" if language_choice == "EN" else "ZH"
+
+if language_choice == "EN":
+    st.session_state.language = "EN"
+elif language_choice == "中文":
+    st.session_state.language = "ZH"
+else:
+    st.session_state.language = "BM"
+
 LANG = st.session_state.language
 T = LANG_TEXT[LANG]
 
