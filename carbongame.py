@@ -336,7 +336,6 @@ LANG_TEXT = {
         "waiting_profession": "Menunggu pemain lain memilih profesion.",
         "auditor_start": "Carbon Auditor bermula dengan dua Peek Next Card.",
     },
-}
 
 # Language selector is intentionally kept in the new version.
 if "language" not in st.session_state:
