@@ -111,6 +111,10 @@ LANG_TEXT = {
         "chaos_bad_score": "Chaos effect: you lost 2 points.",
         "chaos_bad_double": "Chaos effect: your next Power Card costs double AP.",
         "chaos_neutral_peek": "Chaos effect: you may see the next card without drawing it.",
+        "chaos_status_free": "✨ Chaos active: your next Power Card costs 0 AP.",
+        "chaos_status_double": "⚠️ Chaos active: your next Power Card costs double AP.",
+        "chaos_status_peek": "👁️ Chaos active: you may see the next card without drawing it.",
+
         "draw_number": "{player} drew number card [{value}-{color}] into the staging area.",
         "draw_power": "{player} drew Power Card [{card}].",
         "draw_chaos": "{player} drew a Chaos Card.",
@@ -210,6 +214,9 @@ LANG_TEXT = {
         "chaos_bad_score": "混沌效果：你失去2分。",
         "chaos_bad_double": "混沌效果：你的下一张 Power Card 消耗双倍行动点。",
         "chaos_neutral_peek": "混沌效果：你可以查看下一张牌但不抽走。",
+        "chaos_status_free": "✨ 混沌效果生效：你的下一张 Power Card 不消耗行动点。",
+        "chaos_status_double": "⚠️ 混沌效果生效：你的下一张 Power Card 消耗双倍行动点。",
+        "chaos_status_peek": "👁️ 混沌效果生效：你可以查看下一张牌但不抽走。",
         "draw_number": "{player} 抽到数字牌 [{value}-{color}]，进入暂存区。",
         "draw_power": "{player} 抽到 Power Card [{card}]。",
         "draw_chaos": "{player} 抽到混沌卡。",
@@ -309,6 +316,9 @@ LANG_TEXT = {
         "chaos_bad_score": "Kesan Chaos: anda kehilangan 2 mata.",
         "chaos_bad_double": "Kesan Chaos: Power Card anda yang seterusnya memerlukan AP berganda.",
         "chaos_neutral_peek": "Kesan Chaos: anda boleh melihat kad seterusnya tanpa mengambilnya.",
+        "chaos_status_free": "✨ Chaos aktif: Power Card anda yang seterusnya tidak memerlukan AP.",
+        "chaos_status_double": "⚠️ Chaos aktif: Power Card anda yang seterusnya memerlukan AP berganda.",
+        "chaos_status_peek": "👁️ Chaos aktif: anda boleh melihat kad seterusnya tanpa mengambilnya.",
         "draw_number": "{player} mengambil kad nombor [{value}-{color}] ke zon sementara.",
         "draw_power": "{player} mengambil Power Card [{card}].",
         "draw_chaos": "{player} mengambil Kad Chaos.",
@@ -1753,6 +1763,31 @@ def render_player_column(target_is_p1):
 
         if state.get(player_debuff_key, False):
             st.warning(T["regulator_debuff_active"])
+            
+        chaos_free_key = (
+            "p1_free_power_remaining"
+            if target_is_p1
+            else "p2_free_power_remaining"
+        )
+        chaos_double_key = (
+            "p1_double_power_next"
+            if target_is_p1
+            else "p2_double_power_next"
+        )
+        chaos_peek_key = (
+            "p1_peeked_card"
+            if target_is_p1
+            else "p2_peeked_card"
+        )
+
+        if state.get(chaos_free_key, 0) > 0:
+            st.success(T["chaos_status_free"])
+
+        if state.get(chaos_double_key, False):
+            st.warning(T["chaos_status_double"])
+
+        if state.get(chaos_peek_key) is not None:
+            st.info(T["chaos_status_peek"])
 
         if turn_is_this_player:
             if is_mine:
